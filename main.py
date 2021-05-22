@@ -1,5 +1,8 @@
 import copy
-
+import os
+import time
+from itertools import count
+from multiprocessing import Process
 
 class NodParcurgere:
     gr = None
@@ -22,12 +25,15 @@ class NodParcurgere:
             nod = nod.parinte
         return l
 
-    def afisDrum(self):  # returneaza si lungimea drumului
+    def afisDrum(self, cale_output):
+        f = open(cale_output, "a")
         l = self.obtineDrum()
+        f.write("\n")
         for nod in l:
-            print(str(nod))
-        print("Cost: ", self.g)
-        print("Lungime: ", len(l))
+            f.write(str(nod))
+        f.write("\nCost: " + str(self.g))
+        f.write("\nLungime: " + str(len(l)))
+        f.close()
 
     def contineInDrum(self, pozitieBiletNodNou):
         nodDrum = self
@@ -119,7 +125,7 @@ class Graph:
         return listaSuparati
 
     def obtineAscultati(self, sir):
-        listaAscultati = sir.replace("\n","").split(" ")
+        listaAscultati = sir.replace("\n", " ").split()
         timpAscultare = listaAscultati[0]
         listaAscultati.pop(0)
         return listaAscultati, int(timpAscultare)
@@ -142,17 +148,17 @@ class Graph:
             return 1
         return 0
 
-    def profesor(self, nodCurent, pozitieBiletNodNou):
-        if nodCurent.pozitieProfesor is None:
+    def profesor(self, pozitieProfesor, pozitieBiletNodNou):
+        if pozitieProfesor is None:
             return False
-        if abs(nodCurent.pozitieProfesor[0] - pozitieBiletNodNou[0]) < 2:
-            if nodCurent.pozitieProfesor[1] % 2 == 0:
-                if nodCurent.pozitieProfesor[1] - pozitieBiletNodNou[1] < 3 \
-                        or nodCurent.pozitieProfesor[1] - pozitieBiletNodNou[1] > -4:
+        if abs(pozitieProfesor[0] - pozitieBiletNodNou[0]) < 2:
+            if pozitieProfesor[1] % 2 == 0:
+                if pozitieProfesor[1] - pozitieBiletNodNou[1] in range(0, 3) \
+                        or pozitieProfesor[1] - pozitieBiletNodNou[1] in range(-3, 0):
                     return True
-            if nodCurent.pozitieProfesor[1] % 2 == 1:
-                if nodCurent.pozitieProfesor[1] - pozitieBiletNodNou[1] < 4 \
-                        or nodCurent.pozitieProfesor[1] - pozitieBiletNodNou[1] > -3:
+            if pozitieProfesor[1] % 2 == 1:
+                if pozitieProfesor[1] - pozitieBiletNodNou[1] in range(0, 4) \
+                        or pozitieProfesor[1] - pozitieBiletNodNou[1] in range(-2, 0):
                     return True
         return False
 
@@ -161,7 +167,7 @@ class Graph:
         if index > len(self.listaAscultati) - 1:
             return None
         elev = self.listaAscultati[index]
-        pozitieProfesor = self.find(elev,self.banci)
+        pozitieProfesor = self.find(elev, self.banci)
         return pozitieProfesor
 
     def calculeazaCost(self, pozitieBilet, pozitieBiletNodNou):
@@ -193,7 +199,7 @@ class Graph:
                 if linieVecin < 0 or coloanaVecin < 0 or linieVecin >= self.numarColoane \
                         or coloanaVecin >= self.numarLinii or \
                         self.eleviSuparati(pozitieBiletNodNou, nodCurent.pozitieBilet) \
-                        or self.profesor(nodCurent, pozitieBiletNodNou) or not self.existaElev(pozitieBiletNodNou):
+                        or self.profesor(nodCurent.pozitieProfesor, pozitieBiletNodNou) or not self.existaElev(pozitieBiletNodNou):
                     continue
                 if not nodCurent.contineInDrum(pozitieBiletNodNou):
                     listaSuccesori.append(
@@ -215,15 +221,32 @@ class Graph:
             if pozitieBilet != self.scop:
                 return 1
             return 0
+
         elif tip_euristica == "euristica nebanala1":
             euristica = 0
             i_curent, j_curent = pozitieBilet
             i_scop, j_scop = self.scop
             euristica += abs(i_curent - i_scop) + abs(j_curent - j_scop)
+            j_1, j_2 = ((j_curent, j_scop), (j_scop, j_curent))[j_curent > j_scop]
+            if j_1 % 2 == 1:
+                euristica += 1
+            if j_2 % 2 == 1:
+                euristica -= 1
             return euristica
 
         elif tip_euristica == "euristica nebanala2":
-            pass
+            euristica = 0
+            i_curent, j_curent = pozitieBilet
+            i_scop, j_scop = self.scop
+            euristica += abs(i_curent - i_scop)
+            return euristica
+
+        elif tip_euristica == "euristica neadmisibila":
+            euristica = 0
+            i_curent, j_curent = pozitieBilet
+            i_scop, j_scop = self.scop
+            euristica += (i_curent - i_scop)**2 + (j_curent - j_scop)**2
+            return euristica
 
     def __repr__(self):
         sir = ""
@@ -232,10 +255,9 @@ class Graph:
         return sir
 
 
-def a_star(gr, nrSolutiiCautate, tip_euristica):
-    if not gr.verificaExistentaSolutie(gr.start):
-        print("Nu avem solutii")
-        return
+def a_star(gr, cale_output, nrSolutiiCautate, tip_euristica):
+    start_time = time.time()
+    nrSolutie=1
     i, j = gr.start
     c = [
         NodParcurgere(  # pozitieBilet, pozitieProfesor, parinte, mutari, g, h
@@ -249,11 +271,16 @@ def a_star(gr, nrSolutiiCautate, tip_euristica):
         nodCurent = c.pop(0)
 
         if gr.testeaza_scop(nodCurent):
-            print("Solutie: ")
-            nodCurent.afisDrum()
-            print("\n----------------\n")
-            input()
+            f = open(cale_output, "a")
+            f.write("\nSolutie: "+str(nrSolutie))
+            f.close()
+            nodCurent.afisDrum(cale_output)
+            f = open(cale_output, "a")
+            f.write("\n--- %s seconds ---" % (time.time() - start_time))
+            f.write("\n----------------\n")
+            f.close()
             nrSolutiiCautate -= 1
+            nrSolutie+=1
             if nrSolutiiCautate == 0:
                 return
         lSuccesori = gr.genereazaSuccesori(nodCurent, tip_euristica)
@@ -266,24 +293,32 @@ def a_star(gr, nrSolutiiCautate, tip_euristica):
             c.insert(i, s)
 
 
-def uniform_cost(gr, nrSolutiiCautate=1):
+def uniform_cost(gr, cale_output, nrSolutiiCautate=1):
+    start_time = time.time()
+    nrSolutie=1
     i, j = gr.start
     c = [
         NodParcurgere(  # pozitieBilet, pozitieProfesor, parinte, mutari, g, h
-            gr.banci[i][j], gr.start, gr.pozitieProfesor(0), None, 0, 0, gr.calculeaza_h(gr.start, tip_euristica)
+            gr.banci[i][j], gr.start, gr.pozitieProfesor(0), None, 0, 0
         )
     ]
 
     while len(c) > 0:
-        print("Coada actuala: " + str(c))
-        input()
+       # print("Coada actuala: " + str(c))
+       # input()
         nodCurent = c.pop(0)
 
         if gr.testeaza_scop(nodCurent):
-            print("Solutie: ", end="")
-            nodCurent.afisDrum()
-            print("\n----------------\n")
+            f = open(cale_output, "a")
+            f.write("\nSolutie: "+str(nrSolutie))
+            f.close()
+            nodCurent.afisDrum(cale_output)
+            f = open(cale_output, "a")
+            f.write("\n--- %s seconds ---" % (time.time() - start_time))
+            f.write("\n----------------\n")
+            f.close()
             nrSolutiiCautate -= 1
+            nrSolutie += 1
             if nrSolutiiCautate == 0:
                 return
         lSuccesori = gr.genereazaSuccesori(nodCurent)
@@ -295,13 +330,164 @@ def uniform_cost(gr, nrSolutiiCautate=1):
                 i += 1
             c.insert(i, s)
 
-def main():
-    gr = Graph("input_c.txt")
+
+def a_star_optimizat(gr, cale_output, tip_euristica):
+    start_time = time.time()
+    i, j = gr.start
+    # coada open
+    c = [
+        NodParcurgere(
+            gr.banci[i][j], gr.start, gr.pozitieProfesor(0), None, 0, 0, gr.calculeaza_h(gr.start, tip_euristica)
+        )
+    ]
+    closed = []
+
+    while len(c) > 0:
+        #print("Coada actuala: " + str(c))
+        nodCurent = c.pop(0)
+
+        if gr.testeaza_scop(nodCurent):
+            f = open(cale_output, "a")
+            f.write("\nSolutie: ")
+            f.close()
+            nodCurent.afisDrum(cale_output)
+            f = open(cale_output, "a")
+            f.write("\n--- %s seconds ---" % (time.time() - start_time))
+            f.write("\n----------------\n")
+            f.close()
+            return
+
+        lSuccesori = gr.genereazaSuccesori(nodCurent)
+        lSuccesoriCopy = lSuccesori.copy()
+        for s in lSuccesoriCopy:
+            gasitOpen = False
+            for elem in c:
+                if elem.numeElev == s.numeElev:
+                    gasitOpen = True
+                    if elem.f > s.f:
+                        c.remove(elem)
+                    else:
+                        lSuccesori.remove(s)
+                    break
+
+            if not gasitOpen:
+                for elem in closed:
+                    if elem.info == s.info:
+                        if elem.f > s.f:
+                            closed.remove(elem)
+                        else:
+                            lSuccesori.remove(s)
+                        break
+
+        for s in lSuccesori:
+            i = 0
+            while i < len(c):
+                if c[i].f >= s.f:
+                    break
+                i += 1
+            c.insert(i, s)
+
+
+def ida_star(gr, cale_output, nrSolutiiCautate = 0, tip_euristica = "euristica banala"):
+    i, j = gr.start
+    limita = gr.calculeaza_h(gr.start)
+    nodStart = NodParcurgere(
+        gr.banci[i][j], gr.start, gr.pozitieProfesor(0), None, 0, 0, gr.calculeaza_h(gr.start, tip_euristica)
+    )
+    while True:
+
+        #print("Limita de pornire: ", limita)
+        nrSolutiiCautate, rez = construieste_drum(
+            gr, cale_output, nodStart, limita, nrSolutiiCautate
+        )
+        if rez == "gata":
+            break
+        if rez == float("inf"):
+            f = open(cale_output, "a")
+            f.write("\nNu exista suficiente solutii!")
+            f.close()
+            break
+        limita = rez
+        #print(">>> Limita noua: ", limita)
+
+
+def construieste_drum(gr, cale_output, nodCurent, limita, nrSolutiiCautate):
+    start_time = time.time()
+    #f.write("A ajuns la: ", nodCurent)
+    if nodCurent.f > limita:
+        return nrSolutiiCautate, nodCurent.f
+    if gr.testeaza_scop(nodCurent) and nodCurent.f == limita:
+        f = open(cale_output, "a")
+        f.write("\nSolutie: ")
+        f.close()
+        nodCurent.afisDrum(cale_output)
+        f = open(cale_output, "a")
+        #f.write(limita)
+        f.write("\n--- %s seconds ---" % (time.time() - start_time))
+        f.write("\n----------------\n")
+        f.close()
+        nrSolutiiCautate -= 1
+        if nrSolutiiCautate == 0:
+            return nrSolutiiCautate, "gata"
+    lSuccesori = gr.genereazaSuccesori(nodCurent)
+    minim = float("inf")
+    for s in lSuccesori:
+        nrSolutiiCautate, rez = construieste_drum(gr, cale_output, s, limita, nrSolutiiCautate)
+        if rez == "gata":
+            return nrSolutiiCautate, "gata"
+        #f.write("Compara ", rez, " cu ", minim)
+        if rez < minim:
+            minim = rez
+            #f.write("Noul minim: ", minim)
+    return nrSolutiiCautate, minim
+
+
+def util(cale_input, cale_output, nrSolutiiCautate):
+    gr = Graph(cale_input)
     NodParcurgere.gr = gr
+    f = open(cale_output, "w")
+    f.write("\nSolutie " + cale_input)
+    f.close()
+    euristici = ['euristica banala', 'euristica nebanala1', 'euristica nebanala2', 'euristica neadmisibila']
+    for tip_euristica in euristici:
+        f = open(cale_output, "a")
+        f.write("\n\n##################\nSolutii obtinute cu A* " + tip_euristica)
+        f.close()
+        a_star(gr, cale_output, nrSolutiiCautate, tip_euristica)
+    for tip_euristica in euristici:
+        f = open(cale_output, "a")
+        f.write("\n\n##################\nSolutii obtinute cu A* optimizat " + tip_euristica)
+        f.close()
+        a_star_optimizat(gr, cale_output, tip_euristica)
+    for tip_euristica in euristici:
+        f = open(cale_output, "a")
+        f.write("\n\n##################\nSolutii obtinute cu IDA* " + tip_euristica)
+        f.close()
+        ida_star(gr, cale_output, nrSolutiiCautate, tip_euristica)
+    for tip_euristica in euristici:
+        f = open(cale_output, "a")
+        f.write("\n\n##################\nSolutii obtinute cu UCS " + tip_euristica)
+        f.close()
+        uniform_cost(gr, cale_output, nrSolutiiCautate)
+
+
+def main():
+
     nrSolutiiCautate = int(input('Introduceti nuumarul de solutii:'))
-    print("\n\n##################\nSolutii obtinute cu A*:")
-    a_star(gr, nrSolutiiCautate,"euristica banala")
-   # uniform_cost(gr, nrSolutiiCautate)
+    folder_input = str(input('Introduceti calea de input'))
+    folder_output = str(input('Introduceti calea de output'))
+    cale_input_1 = os.path.join(folder_input, "input_1.txt")
+    cale_output_1 = os.path.join(folder_output, "output_1.txt")
+    util(cale_input_1, cale_output_1, nrSolutiiCautate)
+    cale_input_2 = os.path.join(folder_input, "input_2.txt")
+    cale_output_2 = os.path.join(folder_output, "output_2.txt")
+    util(cale_input_2, cale_output_2, nrSolutiiCautate)
+    cale_input_3 = os.path.join(folder_input, "input_3.txt")
+    cale_output_3 = os.path.join(folder_output, "output_3.txt")
+    util(cale_input_3, cale_output_3, nrSolutiiCautate)
+    cale_input_4 = os.path.join(folder_input, "input_4.txt")
+    cale_output_4 = os.path.join(folder_output, "output_4.txt")
+    #util(cale_input_4, cale_output_4, nrSolutiiCautate)
 
 if __name__ == '__main__':
     main()

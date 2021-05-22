@@ -1,0 +1,54 @@
+
+Solutie input\input_1.txt
+
+##################
+Solutii obtinute cu A* euristica banala
+
+##################
+Solutii obtinute cu A* euristica nebanala1
+
+##################
+Solutii obtinute cu A* euristica nebanala2
+
+##################
+Solutii obtinute cu A* euristica neadmisibila
+
+##################
+Solutii obtinute cu A* optimizat euristica banala
+
+##################
+Solutii obtinute cu A* optimizat euristica nebanala1
+
+##################
+Solutii obtinute cu A* optimizat euristica nebanala2
+
+##################
+Solutii obtinute cu A* optimizat euristica neadmisibila
+
+##################
+Solutii obtinute cu IDA* euristica banala
+Nu exista suficiente solutii!
+
+##################
+Solutii obtinute cu IDA* euristica nebanala1
+Nu exista suficiente solutii!
+
+##################
+Solutii obtinute cu IDA* euristica nebanala2
+Nu exista suficiente solutii!
+
+##################
+Solutii obtinute cu IDA* euristica neadmisibila
+Nu exista suficiente solutii!
+
+##################
+Solutii obtinute cu UCS euristica banala
+
+##################
+Solutii obtinute cu UCS euristica nebanala1
+
+##################
+Solutii obtinute cu UCS euristica nebanala2
+
+##################
+Solutii obtinute cu UCS euristica neadmisibila

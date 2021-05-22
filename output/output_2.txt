@@ -1,0 +1,137 @@
+
+Solutie input\input_2.txt
+
+##################
+Solutii obtinute cu A* euristica banala
+Solutie: 1
+ionel > alina
+Cost: 0
+Lungime: 2
+--- 0.010003805160522461 seconds ---
+----------------
+
+
+##################
+Solutii obtinute cu A* euristica nebanala1
+Solutie: 1
+ionel > alina
+Cost: 0
+Lungime: 2
+--- 0.0 seconds ---
+----------------
+
+
+##################
+Solutii obtinute cu A* euristica nebanala2
+Solutie: 1
+ionel > alina
+Cost: 0
+Lungime: 2
+--- 0.0 seconds ---
+----------------
+
+
+##################
+Solutii obtinute cu A* euristica neadmisibila
+Solutie: 1
+ionel > alina
+Cost: 0
+Lungime: 2
+--- 0.0 seconds ---
+----------------
+
+
+##################
+Solutii obtinute cu A* optimizat euristica banala
+Solutie: 
+ionel > alina
+Cost: 0
+Lungime: 2
+--- 0.0 seconds ---
+----------------
+
+
+##################
+Solutii obtinute cu A* optimizat euristica nebanala1
+Solutie: 
+ionel > alina
+Cost: 0
+Lungime: 2
+--- 0.0 seconds ---
+----------------
+
+
+##################
+Solutii obtinute cu A* optimizat euristica nebanala2
+Solutie: 
+ionel > alina
+Cost: 0
+Lungime: 2
+--- 0.01562786102294922 seconds ---
+----------------
+
+
+##################
+Solutii obtinute cu A* optimizat euristica neadmisibila
+Solutie: 
+ionel > alina
+Cost: 0
+Lungime: 2
+--- 0.0 seconds ---
+----------------
+
+
+##################
+Solutii obtinute cu IDA* euristica banala
+Nu exista suficiente solutii!
+
+##################
+Solutii obtinute cu IDA* euristica nebanala1
+Nu exista suficiente solutii!
+
+##################
+Solutii obtinute cu IDA* euristica nebanala2
+Nu exista suficiente solutii!
+
+##################
+Solutii obtinute cu IDA* euristica neadmisibila
+Nu exista suficiente solutii!
+
+##################
+Solutii obtinute cu UCS euristica banala
+Solutie: 1
+ionel > alina
+Cost: 0
+Lungime: 2
+--- 0.015622854232788086 seconds ---
+----------------
+
+
+##################
+Solutii obtinute cu UCS euristica nebanala1
+Solutie: 1
+ionel > alina
+Cost: 0
+Lungime: 2
+--- 0.0 seconds ---
+----------------
+
+
+##################
+Solutii obtinute cu UCS euristica nebanala2
+Solutie: 1
+ionel > alina
+Cost: 0
+Lungime: 2
+--- 0.0 seconds ---
+----------------
+
+
+##################
+Solutii obtinute cu UCS euristica neadmisibila
+Solutie: 1
+ionel > alina
+Cost: 0
+Lungime: 2
+--- 0.0 seconds ---
+----------------
