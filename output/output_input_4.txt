@@ -1,0 +1,155 @@
+
+Solutie input\input_4.txt
+
+##################
+Solutii obtinute cu A* euristica banala
+Solutie: 1
+ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
+Cost: 7
+Lungime: 9
+--- 0.015622138977050781 seconds ---
+----------------
+
+
+##################
+Solutii obtinute cu A* euristica nebanala1
+Solutie: 1
+ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
+Cost: 7
+Lungime: 9
+--- 0.0 seconds ---
+----------------
+
+
+##################
+Solutii obtinute cu A* euristica nebanala2
+Solutie: 1
+ionel > alina v diana v costin >> anda v dana > cristian >> tamara > dragos
+Cost: 7
+Lungime: 9
+--- 0.0 seconds ---
+----------------
+
+
+##################
+Solutii obtinute cu A* euristica neadmisibila
+Solutie: 1
+ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
+Cost: 7
+Lungime: 9
+--- 0.0 seconds ---
+----------------
+
+
+##################
+Solutii obtinute cu A* optimizat euristica banala
+Solutie: 
+ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
+Cost: 7
+Lungime: 9
+--- 0.0 seconds ---
+----------------
+
+
+##################
+Solutii obtinute cu A* optimizat euristica nebanala1
+Solutie: 
+ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
+Cost: 7
+Lungime: 9
+--- 0.0 seconds ---
+----------------
+
+
+##################
+Solutii obtinute cu A* optimizat euristica nebanala2
+Solutie: 
+ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
+Cost: 7
+Lungime: 9
+--- 0.0 seconds ---
+----------------
+
+
+##################
+Solutii obtinute cu A* optimizat euristica neadmisibila
+Solutie: 
+ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
+Cost: 7
+Lungime: 9
+--- 0.0 seconds ---
+----------------
+
+
+##################
+Solutii obtinute cu IDA* euristica banala
+Solutie: 
+ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
+Cost: 7
+Lungime: 9
+--- 0.0 seconds ---
+----------------
+
+
+##################
+Solutii obtinute cu IDA* euristica nebanala1
+Solutie: 
+ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
+Cost: 7
+Lungime: 9
+--- 0.0 seconds ---
+----------------
+
+
+##################
+Solutii obtinute cu IDA* euristica nebanala2
+Solutie: 
+ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
+Cost: 7
+Lungime: 9
+--- 0.0 seconds ---
+----------------
+
+
+##################
+Solutii obtinute cu IDA* euristica neadmisibila
+Nu exista suficiente solutii!
+
+##################
+Solutii obtinute cu UCS euristica banala
+Solutie: 1
+ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
+Cost: 7
+Lungime: 9
+--- 0.0 seconds ---
+----------------
+
+
+##################
+Solutii obtinute cu UCS euristica nebanala1
+Solutie: 1
+ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
+Cost: 7
+Lungime: 9
+--- 0.0 seconds ---
+----------------
+
+
+##################
+Solutii obtinute cu UCS euristica nebanala2
+Solutie: 1
+ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
+Cost: 7
+Lungime: 9
+--- 0.0 seconds ---
+----------------
+
+
+##################
+Solutii obtinute cu UCS euristica neadmisibila
+Solutie: 1
+ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
+Cost: 7
+Lungime: 9
+--- 0.0 seconds ---
+----------------

@@ -7,7 +7,7 @@ Solutie: 1
 ionel > alina
 Cost: 0
 Lungime: 2
---- 0.010003805160522461 seconds ---
+--- 0.0 seconds ---
 ----------------
 
 
@@ -67,7 +67,7 @@ Solutie:
 ionel > alina
 Cost: 0
 Lungime: 2
---- 0.01562786102294922 seconds ---
+--- 0.0 seconds ---
 ----------------
 
 
@@ -103,7 +103,7 @@ Solutie: 1
 ionel > alina
 Cost: 0
 Lungime: 2
---- 0.015622854232788086 seconds ---
+--- 0.0 seconds ---
 ----------------
 
 
@@ -133,5 +133,5 @@ Solutie: 1
 ionel > alina
 Cost: 0
 Lungime: 2
---- 0.0 seconds ---
+--- 0.008046150207519531 seconds ---
 ----------------

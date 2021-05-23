@@ -4,6 +4,9 @@ import time
 from itertools import count
 from multiprocessing import Process
 
+import stopit
+
+
 class NodParcurgere:
     gr = None
 
@@ -254,7 +257,7 @@ class Graph:
             sir += "{} = {}\n".format(k, v)
         return sir
 
-
+@stopit.threading_timeoutable(default="intrat in timeout")
 def a_star(gr, cale_output, nrSolutiiCautate, tip_euristica):
     start_time = time.time()
     nrSolutie=1
@@ -293,6 +296,7 @@ def a_star(gr, cale_output, nrSolutiiCautate, tip_euristica):
             c.insert(i, s)
 
 
+@stopit.threading_timeoutable(default="intrat in timeout")
 def uniform_cost(gr, cale_output, nrSolutiiCautate=1):
     start_time = time.time()
     nrSolutie=1
@@ -330,7 +334,7 @@ def uniform_cost(gr, cale_output, nrSolutiiCautate=1):
                 i += 1
             c.insert(i, s)
 
-
+@stopit.threading_timeoutable(default="intrat in timeout")
 def a_star_optimizat(gr, cale_output, tip_euristica):
     start_time = time.time()
     i, j = gr.start
@@ -387,7 +391,7 @@ def a_star_optimizat(gr, cale_output, tip_euristica):
                 i += 1
             c.insert(i, s)
 
-
+@stopit.threading_timeoutable(default="intrat in timeout")
 def ida_star(gr, cale_output, nrSolutiiCautate = 0, tip_euristica = "euristica banala"):
     i, j = gr.start
     limita = gr.calculeaza_h(gr.start)
@@ -442,7 +446,7 @@ def construieste_drum(gr, cale_output, nodCurent, limita, nrSolutiiCautate):
     return nrSolutiiCautate, minim
 
 
-def util(cale_input, cale_output, nrSolutiiCautate):
+def util(cale_input, cale_output, nrSolutiiCautate, timeout):
     gr = Graph(cale_input)
     NodParcurgere.gr = gr
     f = open(cale_output, "w")
@@ -453,41 +457,36 @@ def util(cale_input, cale_output, nrSolutiiCautate):
         f = open(cale_output, "a")
         f.write("\n\n##################\nSolutii obtinute cu A* " + tip_euristica)
         f.close()
-        a_star(gr, cale_output, nrSolutiiCautate, tip_euristica)
+        a_star(gr, cale_output, nrSolutiiCautate, tip_euristica, timeout=timeout)
     for tip_euristica in euristici:
         f = open(cale_output, "a")
         f.write("\n\n##################\nSolutii obtinute cu A* optimizat " + tip_euristica)
         f.close()
-        a_star_optimizat(gr, cale_output, tip_euristica)
+        a_star_optimizat(gr, cale_output, tip_euristica, timeout=timeout)
     for tip_euristica in euristici:
         f = open(cale_output, "a")
         f.write("\n\n##################\nSolutii obtinute cu IDA* " + tip_euristica)
         f.close()
-        ida_star(gr, cale_output, nrSolutiiCautate, tip_euristica)
+        ida_star(gr, cale_output, nrSolutiiCautate, tip_euristica, timeout=timeout)
     for tip_euristica in euristici:
         f = open(cale_output, "a")
         f.write("\n\n##################\nSolutii obtinute cu UCS " + tip_euristica)
         f.close()
-        uniform_cost(gr, cale_output, nrSolutiiCautate)
+        uniform_cost(gr, cale_output, nrSolutiiCautate, timeout=timeout)
 
 
 def main():
 
-    nrSolutiiCautate = int(input('Introduceti nuumarul de solutii:'))
+    nrSolutiiCautate = int(input('Introduceti numarul de solutii:'))
     folder_input = str(input('Introduceti calea de input'))
     folder_output = str(input('Introduceti calea de output'))
-    cale_input_1 = os.path.join(folder_input, "input_1.txt")
-    cale_output_1 = os.path.join(folder_output, "output_1.txt")
-    util(cale_input_1, cale_output_1, nrSolutiiCautate)
-    cale_input_2 = os.path.join(folder_input, "input_2.txt")
-    cale_output_2 = os.path.join(folder_output, "output_2.txt")
-    util(cale_input_2, cale_output_2, nrSolutiiCautate)
-    cale_input_3 = os.path.join(folder_input, "input_3.txt")
-    cale_output_3 = os.path.join(folder_output, "output_3.txt")
-    util(cale_input_3, cale_output_3, nrSolutiiCautate)
-    cale_input_4 = os.path.join(folder_input, "input_4.txt")
-    cale_output_4 = os.path.join(folder_output, "output_4.txt")
-    #util(cale_input_4, cale_output_4, nrSolutiiCautate)
+    timeout = int(input('Introduceti timpul de timeout'))
+    entries = os.listdir(folder_input)
+    for entry in entries:
+        cale_input = os.path.join(folder_input, entry)
+        cale_output = os.path.join(folder_output, "output_"+entry)
+        util(cale_input, cale_output, nrSolutiiCautate, timeout)
+
 
 if __name__ == '__main__':
     main()
