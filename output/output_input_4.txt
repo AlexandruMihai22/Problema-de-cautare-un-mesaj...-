@@ -4,152 +4,313 @@ Solutie input\input_4.txt
 ##################
 Solutii obtinute cu A* euristica banala
 Solutie: 1
-ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
-Cost: 7
-Lungime: 9
---- 0.015622138977050781 seconds ---
+ionel > alina v diana v costin >> anda > bogdan v cristian >> tamara > dragos >> copil_4
+Cost: 9
+Lungime: 10
+Numarul maxim de noduri este: 74
+--- 0.00599360466003418 seconds ---
+----------------
+
+Solutie: 2
+ionel > alina v diana v costin >> anda v dana > cristian >> tamara > dragos >> copil_4
+Cost: 9
+Lungime: 10
+Numarul maxim de noduri este: 88
+--- 0.007992029190063477 seconds ---
+----------------
+
+Solutie: 3
+ionel > alina v diana v costin v simona >> dana > cristian >> tamara > dragos >> copil_4
+Cost: 9
+Lungime: 10
+Numarul maxim de noduri este: 98
+--- 0.008991003036499023 seconds ---
+----------------
+
+Solutie: 4
+ionel > alina v diana v costin >> anda > bogdan >> dora v tamara > dragos >> copil_4
+Cost: 9
+Lungime: 10
+Numarul maxim de noduri este: 114
+--- 0.010988950729370117 seconds ---
 ----------------
 
 
 ##################
 Solutii obtinute cu A* euristica nebanala1
 Solutie: 1
-ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
-Cost: 7
-Lungime: 9
---- 0.0 seconds ---
+ionel > alina v diana v costin >> anda > bogdan >> dora > marin >> copil_3 v copil_4
+Cost: 9
+Lungime: 10
+Numarul maxim de noduri este: 9
+--- 0.0010020732879638672 seconds ---
+----------------
+
+Solutie: 2
+ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos >> copil_4
+Cost: 9
+Lungime: 10
+Numarul maxim de noduri este: 11
+--- 0.002001047134399414 seconds ---
+----------------
+
+Solutie: 3
+ionel > alina v diana v costin >> anda > bogdan >> dora v tamara > dragos >> copil_4
+Cost: 9
+Lungime: 10
+Numarul maxim de noduri este: 16
+--- 0.003000497817993164 seconds ---
+----------------
+
+Solutie: 4
+ionel > alina v diana v costin >> anda > bogdan v cristian >> tamara > dragos >> copil_4
+Cost: 9
+Lungime: 10
+Numarul maxim de noduri este: 22
+--- 0.003998994827270508 seconds ---
 ----------------
 
 
 ##################
 Solutii obtinute cu A* euristica nebanala2
 Solutie: 1
-ionel > alina v diana v costin >> anda v dana > cristian >> tamara > dragos
-Cost: 7
-Lungime: 9
---- 0.0 seconds ---
+ionel > alina v diana v costin v simona >> dana > cristian >> tamara > dragos >> copil_4
+Cost: 9
+Lungime: 10
+Numarul maxim de noduri este: 123
+--- 0.004997968673706055 seconds ---
+----------------
+
+Solutie: 2
+ionel > alina v diana v costin >> anda > bogdan >> dora v tamara > dragos >> copil_4
+Cost: 9
+Lungime: 10
+Numarul maxim de noduri este: 150
+--- 0.00699615478515625 seconds ---
+----------------
+
+Solutie: 3
+ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos >> copil_4
+Cost: 9
+Lungime: 10
+Numarul maxim de noduri este: 160
+--- 0.007997512817382812 seconds ---
+----------------
+
+Solutie: 4
+ionel > alina v diana v costin >> anda > bogdan >> dora > marin >> copil_3 v copil_4
+Cost: 9
+Lungime: 10
+Numarul maxim de noduri este: 162
+--- 0.008994340896606445 seconds ---
 ----------------
 
 
 ##################
 Solutii obtinute cu A* euristica neadmisibila
 Solutie: 1
-ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
-Cost: 7
-Lungime: 9
---- 0.0 seconds ---
+ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos >> copil_4
+Cost: 9
+Lungime: 10
+Numarul maxim de noduri este: 10
+--- 0.0010066032409667969 seconds ---
+----------------
+
+Solutie: 2
+ionel > alina v diana v costin >> anda > bogdan >> dora > marin >> copil_3 v copil_4
+Cost: 9
+Lungime: 10
+Numarul maxim de noduri este: 12
+--- 0.002003192901611328 seconds ---
+----------------
+
+Solutie: 3
+ionel > alina v diana v costin >> anda > bogdan >> dora v tamara > dragos >> copil_4
+Cost: 9
+Lungime: 10
+Numarul maxim de noduri este: 19
+--- 0.003002643585205078 seconds ---
+----------------
+
+Solutie: 4
+ionel > alina v diana v costin >> anda > bogdan >> dora v tamara > dragos ^ marin >> copil_3 v copil_4
+Cost: 11
+Lungime: 12
+Numarul maxim de noduri este: 22
+--- 0.004001617431640625 seconds ---
 ----------------
 
 
 ##################
 Solutii obtinute cu A* optimizat euristica banala
 Solutie: 
-ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
-Cost: 7
-Lungime: 9
---- 0.0 seconds ---
+ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos >> copil_4
+Cost: 9
+Lungime: 10
+Numarul maxim de noduri este: 13
+--- 0.0020046234130859375 seconds ---
 ----------------
 
 
 ##################
 Solutii obtinute cu A* optimizat euristica nebanala1
 Solutie: 
-ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
-Cost: 7
-Lungime: 9
---- 0.0 seconds ---
+ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos >> copil_4
+Cost: 9
+Lungime: 10
+Numarul maxim de noduri este: 13
+--- 0.0020017623901367188 seconds ---
 ----------------
 
 
 ##################
 Solutii obtinute cu A* optimizat euristica nebanala2
 Solutie: 
-ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
-Cost: 7
-Lungime: 9
---- 0.0 seconds ---
+ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos >> copil_4
+Cost: 9
+Lungime: 10
+Numarul maxim de noduri este: 13
+--- 0.002001523971557617 seconds ---
 ----------------
 
 
 ##################
 Solutii obtinute cu A* optimizat euristica neadmisibila
 Solutie: 
-ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
-Cost: 7
-Lungime: 9
---- 0.0 seconds ---
+ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos >> copil_4
+Cost: 9
+Lungime: 10
+Numarul maxim de noduri este: 13
+--- 0.0020008087158203125 seconds ---
 ----------------
 
 
 ##################
 Solutii obtinute cu IDA* euristica banala
 Solutie: 
-ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
-Cost: 7
-Lungime: 9
---- 0.0 seconds ---
+ionel > alina v diana v costin v simona >> dana > cristian >> tamara > dragos >> copil_4
+Cost: 9
+Lungime: 10
+--- 0.0009992122650146484 seconds ---
+----------------
+
+Solutie: 
+ionel > alina v diana v costin >> anda v dana > cristian >> tamara > dragos >> copil_4
+Cost: 9
+Lungime: 10
+--- 0.0009980201721191406 seconds ---
+----------------
+
+Solutie: 
+ionel > alina v diana v costin >> anda > bogdan v cristian >> tamara > dragos >> copil_4
+Cost: 9
+Lungime: 10
+--- 0.0009987354278564453 seconds ---
+----------------
+
+Solutie: 
+ionel > alina v diana v costin >> anda > bogdan >> dora v tamara > dragos >> copil_4
+Cost: 9
+Lungime: 10
+--- 0.0009989738464355469 seconds ---
 ----------------
 
 
 ##################
 Solutii obtinute cu IDA* euristica nebanala1
 Solutie: 
-ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
-Cost: 7
-Lungime: 9
---- 0.0 seconds ---
+ionel > alina v diana v costin v simona >> dana > cristian >> tamara > dragos >> copil_4
+Cost: 9
+Lungime: 10
+--- 0.0009987354278564453 seconds ---
+----------------
+
+Solutie: 
+ionel > alina v diana v costin >> anda v dana > cristian >> tamara > dragos >> copil_4
+Cost: 9
+Lungime: 10
+--- 0.0009970664978027344 seconds ---
+----------------
+
+Solutie: 
+ionel > alina v diana v costin >> anda > bogdan v cristian >> tamara > dragos >> copil_4
+Cost: 9
+Lungime: 10
+--- 0.0010008811950683594 seconds ---
+----------------
+
+Solutie: 
+ionel > alina v diana v costin >> anda > bogdan >> dora v tamara > dragos >> copil_4
+Cost: 9
+Lungime: 10
+--- 0.0009975433349609375 seconds ---
 ----------------
 
 
 ##################
 Solutii obtinute cu IDA* euristica nebanala2
 Solutie: 
-ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
-Cost: 7
-Lungime: 9
---- 0.0 seconds ---
+ionel > alina v diana v costin v simona >> dana > cristian >> tamara > dragos >> copil_4
+Cost: 9
+Lungime: 10
+--- 0.00099945068359375 seconds ---
+----------------
+
+Solutie: 
+ionel > alina v diana v costin >> anda v dana > cristian >> tamara > dragos >> copil_4
+Cost: 9
+Lungime: 10
+--- 0.0009984970092773438 seconds ---
+----------------
+
+Solutie: 
+ionel > alina v diana v costin >> anda > bogdan v cristian >> tamara > dragos >> copil_4
+Cost: 9
+Lungime: 10
+--- 0.0009989738464355469 seconds ---
+----------------
+
+Solutie: 
+ionel > alina v diana v costin >> anda > bogdan >> dora v tamara > dragos >> copil_4
+Cost: 9
+Lungime: 10
+--- 0.0009989738464355469 seconds ---
 ----------------
 
 
 ##################
 Solutii obtinute cu IDA* euristica neadmisibila
-Nu exista suficiente solutii!
 
 ##################
-Solutii obtinute cu UCS euristica banala
+Solutii obtinute cu UCS 
 Solutie: 1
-ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
-Cost: 7
-Lungime: 9
---- 0.0 seconds ---
+ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos >> copil_4
+Cost: 9
+Lungime: 10
+Numarul maxim de noduri este: 176
+--- 0.01598215103149414 seconds ---
 ----------------
 
-
-##################
-Solutii obtinute cu UCS euristica nebanala1
-Solutie: 1
-ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
-Cost: 7
-Lungime: 9
---- 0.0 seconds ---
+Solutie: 2
+ionel > alina v diana v costin >> anda > bogdan v cristian >> tamara > dragos >> copil_4
+Cost: 9
+Lungime: 10
+Numarul maxim de noduri este: 186
+--- 0.017979860305786133 seconds ---
 ----------------
 
-
-##################
-Solutii obtinute cu UCS euristica nebanala2
-Solutie: 1
-ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
-Cost: 7
-Lungime: 9
---- 0.0 seconds ---
+Solutie: 3
+ionel > alina v diana v costin v simona >> dana > cristian >> tamara > dragos >> copil_4
+Cost: 9
+Lungime: 10
+Numarul maxim de noduri este: 187
+--- 0.018978357315063477 seconds ---
 ----------------
 
-
-##################
-Solutii obtinute cu UCS euristica neadmisibila
-Solutie: 1
-ionel > alina v diana v costin >> anda > bogdan >> dora > marin v dragos
-Cost: 7
-Lungime: 9
---- 0.0 seconds ---
+Solutie: 4
+ionel > alina v diana v costin >> anda v dana > cristian >> tamara > dragos >> copil_4
+Cost: 9
+Lungime: 10
+Numarul maxim de noduri este: 188
+--- 0.019977807998657227 seconds ---
 ----------------

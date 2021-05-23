@@ -1,10 +1,10 @@
-ionel alina teo eliza carmen monica
-george diana bob liber nadia mihai
-liber costin anda bogdan dora marin
-luiza simona dana cristian tamara dragos
-mihnea razvan radu patricia gigel elena
-liber andrei oana victor liber dorel
-viorel alex ela nicoleta maria gabi
+ionel alina teo eliza carmen monica copil_1 copil_8
+george diana bob liber nadia mihai copil_2 copil_9
+liber costin anda bogdan dora marin copil_3 copil_10
+luiza simona dana cristian tamara dragos copil_4 copil_11
+mihnea razvan radu patricia gigel elena copil_5 copil_12
+liber andrei oana victor liber dorel copil_6 copil_13
+viorel alex ela nicoleta maria gabi copil_7 copil_14
 suparati
 george ionel
 ela nicoleta
@@ -16,4 +16,4 @@ alina dragos
 ascultati:
 4 monica
 maria
-mesaj: ionel -> dragos
+mesaj: ionel -> copil_4

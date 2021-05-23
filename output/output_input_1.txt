@@ -42,13 +42,4 @@ Solutii obtinute cu IDA* euristica neadmisibila
 Nu exista suficiente solutii!
 
 ##################
-Solutii obtinute cu UCS euristica banala
-
-##################
-Solutii obtinute cu UCS euristica nebanala1
-
-##################
-Solutii obtinute cu UCS euristica nebanala2
-
-##################
-Solutii obtinute cu UCS euristica neadmisibila
+Solutii obtinute cu UCS 

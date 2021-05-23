@@ -4,134 +4,141 @@ Solutie input\input_2.txt
 ##################
 Solutii obtinute cu A* euristica banala
 Solutie: 1
-ionel > alina
+alina
 Cost: 0
-Lungime: 2
---- 0.0 seconds ---
+Lungime: 1
+Numarul maxim de noduri este: 1
+--- 0.0009965896606445312 seconds ---
 ----------------
 
 
 ##################
 Solutii obtinute cu A* euristica nebanala1
 Solutie: 1
-ionel > alina
+alina
 Cost: 0
-Lungime: 2
---- 0.0 seconds ---
+Lungime: 1
+Numarul maxim de noduri este: 1
+--- 0.0009999275207519531 seconds ---
 ----------------
 
 
 ##################
 Solutii obtinute cu A* euristica nebanala2
 Solutie: 1
-ionel > alina
+alina
 Cost: 0
-Lungime: 2
---- 0.0 seconds ---
+Lungime: 1
+Numarul maxim de noduri este: 1
+--- 0.0009992122650146484 seconds ---
 ----------------
 
 
 ##################
 Solutii obtinute cu A* euristica neadmisibila
 Solutie: 1
-ionel > alina
+alina
 Cost: 0
-Lungime: 2
---- 0.0 seconds ---
+Lungime: 1
+Numarul maxim de noduri este: 1
+--- 0.0010039806365966797 seconds ---
 ----------------
 
 
 ##################
 Solutii obtinute cu A* optimizat euristica banala
 Solutie: 
-ionel > alina
+alina
 Cost: 0
-Lungime: 2
---- 0.0 seconds ---
+Lungime: 1
+Numarul maxim de noduri este: 1
+--- 0.0009999275207519531 seconds ---
 ----------------
 
 
 ##################
 Solutii obtinute cu A* optimizat euristica nebanala1
 Solutie: 
-ionel > alina
+alina
 Cost: 0
-Lungime: 2
---- 0.0 seconds ---
+Lungime: 1
+Numarul maxim de noduri este: 1
+--- 0.0009980201721191406 seconds ---
 ----------------
 
 
 ##################
 Solutii obtinute cu A* optimizat euristica nebanala2
 Solutie: 
-ionel > alina
+alina
 Cost: 0
-Lungime: 2
---- 0.0 seconds ---
+Lungime: 1
+Numarul maxim de noduri este: 1
+--- 0.00099945068359375 seconds ---
 ----------------
 
 
 ##################
 Solutii obtinute cu A* optimizat euristica neadmisibila
 Solutie: 
-ionel > alina
+alina
 Cost: 0
-Lungime: 2
---- 0.0 seconds ---
+Lungime: 1
+Numarul maxim de noduri este: 1
+--- 0.0009984970092773438 seconds ---
 ----------------
 
 
 ##################
 Solutii obtinute cu IDA* euristica banala
+Solutie: 
+alina
+Cost: 0
+Lungime: 1
+--- 0.0009984970092773438 seconds ---
+----------------
+
 Nu exista suficiente solutii!
 
 ##################
 Solutii obtinute cu IDA* euristica nebanala1
+Solutie: 
+alina
+Cost: 0
+Lungime: 1
+--- 0.0009987354278564453 seconds ---
+----------------
+
 Nu exista suficiente solutii!
 
 ##################
 Solutii obtinute cu IDA* euristica nebanala2
+Solutie: 
+alina
+Cost: 0
+Lungime: 1
+--- 0.0009975433349609375 seconds ---
+----------------
+
 Nu exista suficiente solutii!
 
 ##################
 Solutii obtinute cu IDA* euristica neadmisibila
+Solutie: 
+alina
+Cost: 0
+Lungime: 1
+--- 0.0010044574737548828 seconds ---
+----------------
+
 Nu exista suficiente solutii!
 
 ##################
-Solutii obtinute cu UCS euristica banala
+Solutii obtinute cu UCS 
 Solutie: 1
-ionel > alina
+alina
 Cost: 0
-Lungime: 2
+Lungime: 1
+Numarul maxim de noduri este: 1
 --- 0.0 seconds ---
-----------------
-
-
-##################
-Solutii obtinute cu UCS euristica nebanala1
-Solutie: 1
-ionel > alina
-Cost: 0
-Lungime: 2
---- 0.0 seconds ---
-----------------
-
-
-##################
-Solutii obtinute cu UCS euristica nebanala2
-Solutie: 1
-ionel > alina
-Cost: 0
-Lungime: 2
---- 0.0 seconds ---
-----------------
-
-
-##################
-Solutii obtinute cu UCS euristica neadmisibila
-Solutie: 1
-ionel > alina
-Cost: 0
-Lungime: 2
---- 0.008046150207519531 seconds ---
 ----------------

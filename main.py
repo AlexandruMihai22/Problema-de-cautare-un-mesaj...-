@@ -1,9 +1,6 @@
 import copy
 import os
 import time
-from itertools import count
-from multiprocessing import Process
-
 import stopit
 
 
@@ -267,10 +264,13 @@ def a_star(gr, cale_output, nrSolutiiCautate, tip_euristica):
             gr.banci[i][j], gr.start, gr.pozitieProfesor(0), None, 0, 0, gr.calculeaza_h(gr.start, tip_euristica)
         )
     ]
+    maxNoduri=0
 
     while len(c) > 0:
         # print("Coada actuala: " + str(c))
         # input()
+        if len(c) > maxNoduri:
+            maxNoduri = len(c)
         nodCurent = c.pop(0)
 
         if gr.testeaza_scop(nodCurent):
@@ -279,6 +279,7 @@ def a_star(gr, cale_output, nrSolutiiCautate, tip_euristica):
             f.close()
             nodCurent.afisDrum(cale_output)
             f = open(cale_output, "a")
+            f.write("\nNumarul maxim de noduri este: "+ str(maxNoduri))
             f.write("\n--- %s seconds ---" % (time.time() - start_time))
             f.write("\n----------------\n")
             f.close()
@@ -306,10 +307,10 @@ def uniform_cost(gr, cale_output, nrSolutiiCautate=1):
             gr.banci[i][j], gr.start, gr.pozitieProfesor(0), None, 0, 0
         )
     ]
+    maxNoduri = 0
 
     while len(c) > 0:
-       # print("Coada actuala: " + str(c))
-       # input()
+        maxNoduri = max(maxNoduri, len(c))
         nodCurent = c.pop(0)
 
         if gr.testeaza_scop(nodCurent):
@@ -318,6 +319,7 @@ def uniform_cost(gr, cale_output, nrSolutiiCautate=1):
             f.close()
             nodCurent.afisDrum(cale_output)
             f = open(cale_output, "a")
+            f.write("\nNumarul maxim de noduri este: " + str(maxNoduri))
             f.write("\n--- %s seconds ---" % (time.time() - start_time))
             f.write("\n----------------\n")
             f.close()
@@ -345,9 +347,9 @@ def a_star_optimizat(gr, cale_output, tip_euristica):
         )
     ]
     closed = []
-
+    maxNoduri=0
     while len(c) > 0:
-        #print("Coada actuala: " + str(c))
+        maxNoduri = max(maxNoduri, len(c)+len(closed))
         nodCurent = c.pop(0)
 
         if gr.testeaza_scop(nodCurent):
@@ -356,6 +358,7 @@ def a_star_optimizat(gr, cale_output, tip_euristica):
             f.close()
             nodCurent.afisDrum(cale_output)
             f = open(cale_output, "a")
+            f.write("\nNumarul maxim de noduri este: " + str(maxNoduri))
             f.write("\n--- %s seconds ---" % (time.time() - start_time))
             f.write("\n----------------\n")
             f.close()
@@ -400,7 +403,6 @@ def ida_star(gr, cale_output, nrSolutiiCautate = 0, tip_euristica = "euristica b
     )
     while True:
 
-        #print("Limita de pornire: ", limita)
         nrSolutiiCautate, rez = construieste_drum(
             gr, cale_output, nodStart, limita, nrSolutiiCautate
         )
@@ -412,12 +414,10 @@ def ida_star(gr, cale_output, nrSolutiiCautate = 0, tip_euristica = "euristica b
             f.close()
             break
         limita = rez
-        #print(">>> Limita noua: ", limita)
 
 
 def construieste_drum(gr, cale_output, nodCurent, limita, nrSolutiiCautate):
     start_time = time.time()
-    #f.write("A ajuns la: ", nodCurent)
     if nodCurent.f > limita:
         return nrSolutiiCautate, nodCurent.f
     if gr.testeaza_scop(nodCurent) and nodCurent.f == limita:
@@ -426,7 +426,6 @@ def construieste_drum(gr, cale_output, nodCurent, limita, nrSolutiiCautate):
         f.close()
         nodCurent.afisDrum(cale_output)
         f = open(cale_output, "a")
-        #f.write(limita)
         f.write("\n--- %s seconds ---" % (time.time() - start_time))
         f.write("\n----------------\n")
         f.close()
@@ -439,10 +438,8 @@ def construieste_drum(gr, cale_output, nodCurent, limita, nrSolutiiCautate):
         nrSolutiiCautate, rez = construieste_drum(gr, cale_output, s, limita, nrSolutiiCautate)
         if rez == "gata":
             return nrSolutiiCautate, "gata"
-        #f.write("Compara ", rez, " cu ", minim)
         if rez < minim:
             minim = rez
-            #f.write("Noul minim: ", minim)
     return nrSolutiiCautate, minim
 
 
@@ -468,11 +465,10 @@ def util(cale_input, cale_output, nrSolutiiCautate, timeout):
         f.write("\n\n##################\nSolutii obtinute cu IDA* " + tip_euristica)
         f.close()
         ida_star(gr, cale_output, nrSolutiiCautate, tip_euristica, timeout=timeout)
-    for tip_euristica in euristici:
-        f = open(cale_output, "a")
-        f.write("\n\n##################\nSolutii obtinute cu UCS " + tip_euristica)
-        f.close()
-        uniform_cost(gr, cale_output, nrSolutiiCautate, timeout=timeout)
+    f = open(cale_output, "a")
+    f.write("\n\n##################\nSolutii obtinute cu UCS ")
+    f.close()
+    uniform_cost(gr, cale_output, nrSolutiiCautate, timeout=timeout)
 
 
 def main():
